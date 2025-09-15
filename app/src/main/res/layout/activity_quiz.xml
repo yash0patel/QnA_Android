@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:padding="20dp">
+
+    <!-- Heading -->
+    <TextView
+        android:id="@+id/tvHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quiz Time"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/primaryColor"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
+
+    <!-- Question -->
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="What is the capital of France?"
+        android:textSize="18sp"
+        android:textColor="@color/textPrimary"
+        android:layout_below="@id/tvHeading"
+        android:layout_marginTop="30dp"
+        android:padding="10dp" />
+
+    <!-- Option 1 -->
+    <Button
+        android:id="@+id/btnOption1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Paris"
+        android:backgroundTint="@color/primaryColor"
+        android:textColor="@color/white"
+        android:layout_below="@id/tvQuestion"
+        android:layout_marginTop="20dp" />
+
+    <!-- Option 2 -->
+    <Button
+        android:id="@+id/btnOption2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="London"
+        android:backgroundTint="@color/primaryColor"
+        android:textColor="@color/white"
+        android:layout_below="@id/btnOption1"
+        android:layout_marginTop="12dp" />
+
+    <!-- Option 3 -->
+    <Button
+        android:id="@+id/btnOption3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rome"
+        android:backgroundTint="@color/primaryColor"
+        android:textColor="@color/white"
+        android:layout_below="@id/btnOption2"
+        android:layout_marginTop="12dp" />
+
+    <!-- Option 4 -->
+    <Button
+        android:id="@+id/btnOption4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Berlin"
+        android:backgroundTint="@color/primaryColor"
+        android:textColor="@color/white"
+        android:layout_below="@id/btnOption3"
+        android:layout_marginTop="12dp" />
+
+    <!-- End Quiz Button -->
+    <Button
+        android:id="@+id/btnEndQuiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="End Quiz"
+        android:backgroundTint="@color/textSecondary"
+        android:textColor="@color/white"
+        android:layout_below="@id/btnOption4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp" />
+
+</RelativeLayout>

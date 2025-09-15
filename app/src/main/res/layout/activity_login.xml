@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    tools:context=".LoginActivity"
+    android:padding="16dp">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvLoginTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="?android:attr/textColorPrimary"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"/>
+
+    <!-- Email -->
+    <EditText
+        android:id="@+id/edtLoginEmail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        android:background="?android:attr/editTextBackground"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textColorHint="?android:attr/textColorSecondary"
+        android:layout_below="@id/tvLoginTitle"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
+
+    <!-- Password -->
+    <EditText
+        android:id="@+id/edtLoginPassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:background="?android:attr/editTextBackground"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textColorHint="?android:attr/textColorSecondary"
+        android:layout_below="@id/edtLoginEmail"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
+
+    <!-- Login Button -->
+    <Button
+        android:id="@+id/btnLoginSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Login"
+        android:textStyle="bold"
+        android:backgroundTint="@color/primaryColor"
+        android:textColor="?android:attr/textColorPrimary"
+        android:layout_below="@id/edtLoginPassword"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"/>
+
+    <!-- New User Text -->
+    <TextView
+        android:id="@+id/tvLoginNewUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New User?"
+        android:textColor="?android:attr/textColorSecondary"
+        android:layout_below="@id/btnLoginSubmit"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

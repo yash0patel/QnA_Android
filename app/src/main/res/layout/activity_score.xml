@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:padding="20dp">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quiz Result"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/primaryColor"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+    <!-- Score Text -->
+    <TextView
+        android:id="@+id/tvScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Score: 3 / 5"
+        android:textSize="20sp"
+        android:textColor="@color/textPrimary"
+        android:layout_below="@id/tvTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
+
+    <!-- Home Button -->
+    <Button
+        android:id="@+id/btnHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:backgroundTint="@color/primaryColor"
+        android:textColor="@color/white"
+        android:layout_below="@id/tvScore"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp" />
+
+</RelativeLayout>
