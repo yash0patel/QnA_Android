@@ -18,10 +18,8 @@ public interface ApiService {
     @POST("users")
     Call<Void> createUser(@Body UserRequestModel userRequestModel);
 
+
     @POST("login")
-    Call<LoginResponseModel> loginUser(
-            @HeaderMap Map<String, String> headers,
-            @Body LoginRequestModel loginRequest
-    );
+    Call<LoginResponseModel> loginUser(@Body LoginRequestModel loginRequest);
 
 }

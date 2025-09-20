@@ -1,3 +1,4 @@
+// LoginActivity.java
 package com.royal.qna;
 
 import android.content.Intent;
@@ -18,9 +19,6 @@ import com.royal.qna.model.LoginRequestModel;
 import com.royal.qna.model.LoginResponseModel;
 import com.royal.qna.service.ApiClient;
 import com.royal.qna.service.ApiService;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,9 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         btnLogin.setOnClickListener(v -> submitLogin());
-
         tvSignupLink.setOnClickListener(v -> {
-            // Navigate to SignupActivity
             startActivity(new Intent(LoginActivity.this, SignupActivity.class));
             finish();
         });
@@ -68,6 +64,8 @@ public class LoginActivity extends AppCompatActivity {
     private void submitLogin() {
         String email = edtEmail.getText().toString().trim();
         String password = edtPassword.getText().toString().trim();
+
+        Log.d(TAG, "submitLogin: email=" + email + " password=" + (password.isEmpty() ? "[empty]" : "[hidden]"));
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
@@ -78,48 +76,43 @@ public class LoginActivity extends AppCompatActivity {
         loginRequest.setEmail(email);
         loginRequest.setPassword(password);
 
+        Log.d(TAG, "Calling API: loginUser with " + loginRequest);
+
         ApiService apiService = ApiClient.getApiService();
-
-        // Force same headers as Postman
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Content-Type", "application/json");
-        headers.put("Accept", "*/*");
-        headers.put("User-Agent", "PostmanRuntime/7.46.0");
-        headers.put("Cache-Control", "no-cache");
-        headers.put("Connection", "keep-alive");
-        headers.put("Accept-Encoding", "gzip, deflate, br");
-
-        apiService.loginUser(headers, loginRequest).enqueue(new Callback<LoginResponseModel>() {
+        apiService.loginUser(loginRequest).enqueue(new Callback<LoginResponseModel>() {
             @Override
             public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
+                Log.d(TAG, "onResponse: HTTP " + response.code());
                 if (response.isSuccessful() && response.body() != null) {
                     LoginResponseModel loginResponse = response.body();
-                    Log.d(TAG, "Login successful");
+                    Log.d(TAG, "Login successful: " + loginResponse);
 
-                    // Save info in SharedPreferences
                     getSharedPreferences("qna", MODE_PRIVATE)
                             .edit()
                             .putBoolean("isLoggedIn", true)
                             .putLong("userId", loginResponse.getUserId())
                             .putString("userName", loginResponse.getFirstName())
                             .putString("userEmail", loginResponse.getEmail())
-                            .putString("token", loginResponse.getToken())
                             .apply();
 
                     Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
-
-                    // Navigate to QuizSelectorActivity
                     startActivity(new Intent(LoginActivity.this, QuizSelectorActivity.class));
                     finish();
                 } else {
-                    Log.e(TAG, "Login failed: " + response.code());
+                    String errorBody = "";
+                    try {
+                        errorBody = response.errorBody() != null ? response.errorBody().string() : "";
+                    } catch (Exception e) {
+                        Log.e(TAG, "Error reading errorBody", e);
+                    }
+                    Log.e(TAG, "Login failed: code=" + response.code() + " body=" + errorBody);
                     Toast.makeText(LoginActivity.this, "Login failed: " + response.code(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponseModel> call, Throwable t) {
-                Log.e(TAG, "API call failed: " + t.getMessage());
+                Log.e(TAG, "API call failed", t);
                 Toast.makeText(LoginActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
