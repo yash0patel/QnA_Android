@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuizSelectorActivity"
-    android:padding="20dp">
-
+    android:padding="20dp"
+    android:background="@color/backgroundColor"
+    tools:context=".QuizSelectorActivity">
 
     <!-- Heading -->
     <TextView
@@ -15,11 +14,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quiz Selector"
-        android:textSize="30sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         android:textColor="@color/primaryColor"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="16dp"
+        android:letterSpacing="0.05" />
 
     <!-- Subheading -->
     <TextView
@@ -27,46 +27,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select a quiz category to begin"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textColor="@color/textSecondary"
         android:layout_below="@id/tvHeading"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="8dp"
+        android:letterSpacing="0.02" />
 
-    <!-- Sports Quiz -->
-    <Button
-        android:id="@+id/btnSports"
+    <!-- ProgressBar (center) -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true" />
+
+    <!-- Scroll area for quiz cards -->
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:text="Sports Quiz"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/primaryColor"
+        android:layout_height="match_parent"
         android:layout_below="@id/tvSubHeading"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="20dp"
+        android:layout_above="@+id/bottomSpacer"
+        android:fillViewport="true">
 
-    <!-- Science Quiz -->
-    <Button
-        android:id="@+id/btnScience"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:text="Science Quiz"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/primaryColor"
-        android:layout_below="@id/btnSports"
-        android:layout_marginTop="20dp" />
+        <LinearLayout
+            android:id="@+id/layoutQuizzes"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp" />
+    </ScrollView>
 
-    <!-- History Quiz -->
-    <Button
-        android:id="@+id/btnHistory"
+    <!-- Bottom Spacer -->
+    <View
+        android:id="@+id/bottomSpacer"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:text="History Quiz"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/primaryColor"
-        android:layout_below="@id/btnScience"
-        android:layout_marginTop="20dp" />
+        android:layout_height="16dp"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

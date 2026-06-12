@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="primaryColor">#6200EE</color> <!-- Purple -->
-    <color name="backgroundColor">#FFFFFF</color> <!-- White -->
-    <color name="textPrimary">#000000</color> <!-- Black -->
-    <color name="textSecondary">#666666</color> <!-- Gray -->
+    <color name="primaryColor">#2196F3</color>
+    <color name="primaryColorDark">#1976D2</color>
+    <color name="accentColor">#FF4081</color>
+    <color name="backgroundColor">#F5F5F5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="textPrimary">#212121</color>
+    <color name="textSecondary">#757575</color>
+    <color name="correctColor">#4CAF50</color>
+    <color name="wrongColor">#F44336</color>
+    <color name="selectedColor">#1976D2</color>  <!-- blue-ish when tapped -->
+    <color name="headingTextColor">#FFFFFF</color>
 </resources>
